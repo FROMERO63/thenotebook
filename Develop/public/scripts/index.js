@@ -2,12 +2,12 @@ const express = require ('express');
 const app = express();
 
 
-
 let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+
 
 
 if (window.location.pathname === '/notes') {
