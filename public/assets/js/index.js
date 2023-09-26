@@ -1,7 +1,3 @@
-const express = require ('express');
-const app = express();
-
-
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -11,15 +7,10 @@ let noteList;
 
 
 if (window.location.pathname === '/notes') {
-  //selects the note tite input area on notes html page
   noteTitle = document.querySelector('.note-title');
-  //selects the note text input area on notes html page
   noteText = document.querySelector('.note-textarea');
-  //selects the save button on header of the notes html page
   saveNoteBtn = document.querySelector('.save-note');
-  //selects the new note cross on the header of the notes html page
   newNoteBtn = document.querySelector('.new-note');
-  //selects the list of the added notes on the notes html page
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
@@ -37,21 +28,21 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  app.fetch('/api/notes', {
+  fetch('/api/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  })
 
 const saveNote = (note) =>
-  app.fetch('/api/notes',{
+  fetch('/api/notes',{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(note),
-  });
+  })
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
