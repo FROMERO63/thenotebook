@@ -9,6 +9,10 @@ body {
   display: none;
 }
 
+.new-note {
+  display: none;
+}
+
 #clearNote {
   display: none;
   color: white;

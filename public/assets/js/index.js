@@ -59,6 +59,7 @@ const deleteNote = (id) =>
 const renderActiveNote = () => {
   hide(saveNoteBtn);
   hide(clearNoteBtn);
+  show(newNoteBtn)
 
   if (activeNote.id) {
     //sets the attribute readonly which makes the text readable but not editable
@@ -124,12 +125,14 @@ const handleNoteView = (e) => {
 const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
+  hide(newNoteBtn);
 };
 
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
     hide(clearNoteBtn);
+    hide(newNoteBtn);
   } else {
     show(saveNoteBtn);
     show(clearNoteBtn);
