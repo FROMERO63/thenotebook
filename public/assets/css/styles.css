@@ -9,6 +9,11 @@ body {
   display: none;
 }
 
+#clearNote {
+  display: none;
+  color: white;
+}
+
 .icons i {
   margin-left: 15px;
   margin-right: 15px;

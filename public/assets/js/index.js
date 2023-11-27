@@ -2,6 +2,7 @@ let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
+let clearNoteBtn;
 let noteList;
 
 
@@ -10,6 +11,7 @@ if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
+  clearNoteBtn = document.querySelector('#clearNote');
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
 }
@@ -56,6 +58,7 @@ const deleteNote = (id) =>
 // will render the active notes
 const renderActiveNote = () => {
   hide(saveNoteBtn);
+  hide(clearNoteBtn);
 
   if (activeNote.id) {
     //sets the attribute readonly which makes the text readable but not editable
@@ -82,6 +85,14 @@ const handleNoteSave = () => {
     getAndRenderNotes();
     renderActiveNote();
   });
+};
+
+//function to clear the new note
+const handleNoteClear = () => {
+  noteTitle.value = '';
+  noteText.value = '';
+  hide(saveNoteBtn);
+  hide(clearNoteBtn);
 };
 
 // Delete the clicked note
@@ -118,8 +129,10 @@ const handleNewNoteView = (e) => {
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
+    hide(clearNoteBtn);
   } else {
     show(saveNoteBtn);
+    show(clearNoteBtn);
   }
 };
 
@@ -182,6 +195,7 @@ const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
+  clearNoteBtn.addEventListener('click', handleNoteClear);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
