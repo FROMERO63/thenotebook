@@ -34,4 +34,4 @@ Viewing note will display the note and display a new note button in the display
 
 ## Tests
 To test this site, go to the website to view
-https://fromero63.github.io/logogenerator/
+https://fromero63.github.io/thenotebook/
